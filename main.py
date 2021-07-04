@@ -79,7 +79,7 @@ def hills():
 
 
 # build a dictionary describing the dungeon master:
-#dungeon_master_design = dmaster()
+dungeon_master_design = dmaster()
 
 # get number of players and their names:
 num_players = int(input('Enter the number of victims: '))
