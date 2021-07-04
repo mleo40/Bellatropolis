@@ -1,5 +1,5 @@
 # Bellatropolis
-# v0.0.2
+# v0.0.3
 # bella/mike
 
 # A D&D like game, with a Dungeon master and any number of players
@@ -61,16 +61,29 @@ def town(player_design):
 
     print(next(iter(player_design)) + ' has a bad feeling about this.')
 
+    print('There are only 2 buildings here that look habitable.  You wonder where these people live, but you have\n'
+          'more to worry about right now.\n'
+          'It seems like the only safe buildings are the sheriffs office, or the drug store.\n')
 
-def forest():
+    town1 = input('Sheriff/Store? ')
+
+    if town1.lower() == 'sheriff':
+        print('as you enter the sheriff shoots you dead.')
+    elif town1.lower() == 'store':
+        print('the floor creaks, and gives way under your weight.  You dead.')
+    else:
+        print('you had two options and you picked a 3rd??  you extra dead')
+
+
+def forest(player_design):
     """
     This will manage actions in the forest
     :return:
     """
-    pass
+    print('its pretty scary this way...you sure you wanna go there?\n')
 
 
-def hills():
+def hills(player_design):
     """
     This will manage actions in the hills
     :return:
@@ -79,7 +92,7 @@ def hills():
 
 
 # build a dictionary describing the dungeon master:
-dungeon_master_design = dmaster()
+#dungeon_master_design = dmaster()
 
 # get number of players and their names:
 num_players = int(input('Enter the number of victims: '))
@@ -105,7 +118,7 @@ direction = input("Town/Forest/Hills: ").capitalize()
 if direction == "Town":
     town(player_design)
 elif direction == "Hills":
-    hills(player_design):
+    hills(player_design)
 elif direction == "Forest":
     forest(player_design)
 else:
