@@ -1,5 +1,5 @@
 # Bellatropolis
-# v0.0.1
+# v0.0.2
 # bella/mike
 
 # A D&D like game, with a Dungeon master and any number of players
@@ -24,10 +24,10 @@ def dmaster() -> dict:
       """
     print("Dungeon Masters can only be Elves or Wizards")
 
-    dmaster_design = {'name': input('Dungeon Masters Name: '),
-                      'age': input('Age of the Dungeon Master: '),
-                      'height': input('Height of the Dungeon Master: '),
-                      'race': input('Elf or Wizard? ')
+    dmaster_design = {'name': input('Dungeon Masters Name: ').lower(),
+                      'age': input('Age of the Dungeon Master: ').lower(),
+                      'height': input('Height of the Dungeon Master: ').lower(),
+                      'race': input('Elf or Wizard? ').lower()
                       }
 
     return dmaster_design
@@ -38,9 +38,9 @@ def make_player(player_name: str) -> dict:
       this function will create players
       :return: dict of character traits
       """
-    player_design[player_name] = {'age': int(input(f'Age of Player {player_name} ')),
-                                  'height': int(input(f'Height of Player {player_name} ')),
-                                  'race': input(f'Race of Player (Elf/Ork/Wizard/Human) {player_name} '),
+    player_design[player_name] = {'age': int(input(f'Age of Player {player_name} ').lower()),
+                                  'height': int(input(f'Height of Player {player_name} ').lower()),
+                                  'race': input(f'Race of Player (Elf/Ork/Wizard/Human) {player_name} ').lower(),
                                   }
     player_design[player_name]['strength'] = race_strength[player_design[player_name]['race']]
     player_design[player_name]['health'] = race_health[player_design[player_name]['race']]
@@ -49,14 +49,17 @@ def make_player(player_name: str) -> dict:
     return player_design
 
 
-def town():
+def town(player_design):
     """
     This will manage actions in the town
     :return:
     """
+    print(player_design)
     print('Entering town, you are met with stares from all the crazy people who live here.\n'
           'You hear them whisper to each other and themselves.\n'
           'You catch words like "get out now, while you can", and other ominous speech.\n')
+
+    print(next(iter(player_design)) + ' has a bad feeling about this.')
 
 
 def forest():
@@ -76,7 +79,7 @@ def hills():
 
 
 # build a dictionary describing the dungeon master:
-dungeon_master_design = dmaster()
+#dungeon_master_design = dmaster()
 
 # get number of players and their names:
 num_players = int(input('Enter the number of victims: '))
@@ -94,15 +97,16 @@ print("You stand at the crossroads.\n"
       "To the left, the forest\n"
       "The right, the hills.\n"
       "There is no going back.\n"
-      "Choose.\n"
+      "Choo"
+      "print(player_design)se.\n"
       )
 
-direction = input("Town/Forest/Hills: ")
+direction = input("Town/Forest/Hills: ").capitalize()
 if direction == "Town":
-    town()
+    town(player_design)
 elif direction == "Hills":
-    hills()
+    hills(player_design):
 elif direction == "Forest":
-    forest()
+    forest(player_design)
 else:
     print("You were eaten by goblins for your bad reading, typing or spelling skills")
